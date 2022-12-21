@@ -47,7 +47,12 @@ def extraction_mots(csvfiles):
     mots = cv.get_feature_names_out()
     return mat_count, mots, labels_
 
-
-
-    
-
+def extraction_partielle_mots(csvfile, mots):
+    ''' Entrée : liste de chemins vers des fichiers csv correctement formatés pour les commentaires et une liste blanche de mots
+        car on filtre seulement les mots rencontrés dans le jeu d'entraînement.
+        Sortie : Matrice d'occurence des mots uniquement présents dans la liste blanche par commentaire, pour tous les commentaires '''
+    mat_count, labels_ = [], []
+    with open(csvfile, 'r') as cf:
+        for comment in rows(cf):
+            mat_count.append([comment['CONTENT'].count(mot) for mot in mots])
+    return mat_count
