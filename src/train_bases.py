@@ -22,19 +22,18 @@ print("\nEfficacité clustering (non supervisé) :", e)
 from sklearn.linear_model import LogisticRegression
 
 logistic_regression = LogisticRegression().fit(X, y)
-print(logistic_regression.predict_proba(X_test))
-y_test_pred = logistic_regression.predict(X_test)
+y_test_regpred = logistic_regression.predict(X_test)
 print("\nEfficacité régression logistique sur le modèle d'entraînement (supervisé): ", logistic_regression.score(X, y))
-print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_pred))
+print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_regpred))
 
 # Classifieur 3 : Arbre de décision (supervisé)
 
 from sklearn.tree import DecisionTreeClassifier
 
 decision_tree = DecisionTreeClassifier().fit(X, y)
-y_test_pred = decision_tree.predict(X_test)
-print("\nEfficacité régression logistique sur le modèle d'entraînement (supervisé): ", logistic_regression.score(X, y))
-print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_pred)) 
+y_test_treepred = decision_tree.predict(X_test)
+print("\nEfficacité régression logistique sur le modèle d'entraînement (supervisé): ", decision_tree.score(X, y))
+print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_treepred)) 
 
 
 
