@@ -4,10 +4,15 @@ from lecture_csv import *
 from custom_tools import eff, sim, ratio
 from yt_comments_recup import yt_mat_occ
 
-yt_url = "https://www.youtube.com/watch?v=5AA2yMgoeS0"
+url_reynoldstonightshow = "https://www.youtube.com/watch?v=5AA2yMgoeS0"
+url_avatar2 = "https://www.youtube.com/watch?v=d9MyW72ELq0"
+url_topgun = "https://www.youtube.com/watch?v=qSqVVswa420" 
+url_greenlantern = "https://www.youtube.com/watch?v=7-GO9fo9DtM"
+
+yt_url = url_greenlantern # Entrer l'url ici
 X_test = yt_mat_occ(yt_url, words)
 
-print("Prédictions à partie des modèles :")
+print(f"Prédictions à partir des modèles avec {len(words)} mots connus : ")
 
 # Prédiction
 kmeans = KMeans(n_clusters=2, random_state=0, n_init="auto").fit(X_test)
