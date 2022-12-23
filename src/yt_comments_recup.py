@@ -20,16 +20,16 @@ def recup_comments(URL):
         id=yt_video_id,
         key=key_api
         )
-    titre = request_titre.execute['items'][0]['snippet']['title']
+    titre = request_titre.execute()['items'][0]['snippet']['title']
     comments = []
 
-    print(f"Récupération des commentaires sur la vidéo {titre}... (peut prendre du temps)")
+    print(f"Récupération des commentaires sur la vidéo <{titre}> ... (peut prendre du temps)")
     while request != None: # Tant qu'il reste des pages à défiler
         comments_currentpage = request.execute()
         comments += [ x['snippet']['topLevelComment']['snippet']['textOriginal'] for x in comments_currentpage['items']]
         request = youtube.commentThreads().list_next(request, comments_currentpage) # lister les 100 commentaires suivants
     print("Terminé!")
-    
+
     return comments
 
 def yt_mat_occ(URL, words_list):

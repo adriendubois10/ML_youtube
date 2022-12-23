@@ -1,18 +1,24 @@
 from train_bases import X, y, words, logistic_regression, decision_tree # Importation de modèles entraînés sur les données initiale
+from sklearn.cluster import KMeans
 from lecture_csv import *
 from custom_tools import eff, sim, ratio
 from yt_comments_recup import yt_mat_occ
 
-yt_url = "https://www.youtube.com/watch?v=d9MyW72ELq0" # Bande annonce de Avatar 2 (environ 40k commentaires)
+yt_url = "https://www.youtube.com/watch?v=5AA2yMgoeS0"
 X_test = yt_mat_occ(yt_url, words)
 
+print("Prédictions à partie des modèles :")
+
+# Prédiction
+kmeans = KMeans(n_clusters=2, random_state=0, n_init="auto").fit(X_test)
+y_clust = kmeans.labels_
+
 # Prédiction des modèles entraînés sur les 5 vidéos du dossier bases
-print()
 y_reg = logistic_regression.predict(X_test)
 y_tree = decision_tree.predict(X_test)
 
 print(f"La régression logistique et l'arbre de décision donnent des résultats {sim(y_reg,y_tree) :.1f}% similaires.")
-print(f"Taux de commentaires positifs :\n   * {100-ratio(y_reg): .3f}% pour la régression\n   * {100-ratio(y_tree): .3f}% pour l'arbre")
+print(f"Taux de commentaires positifs :\n   *  {max(ratio(y_clust), 100-ratio(y_clust)):.1f}% pour le clustering (non supervisé) \n   * {100-ratio(y_reg): .1f}% pour la régression\n   * {100-ratio(y_tree): .1f}% pour l'arbre")
 
 
 
