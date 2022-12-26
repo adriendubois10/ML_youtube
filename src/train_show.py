@@ -1,6 +1,6 @@
 from sklearn.cluster import KMeans
 from lecture_csv import *
-from custom_tools import eff, flip, sim
+from custom_tools import eff, flip, sim, ratio
 
 X_full, words, y_full = extraction_mots(bases_noms) # bases_noms contient 5 sets de commentaires
 # X,y jeu d'entrainement et X_test,y_test jeu de validation
@@ -48,6 +48,7 @@ y_tree = dt.predict(X_test)
 
 print(100*"_")
 print("\nPrédictions sur la 5e vidéo restreinte aux mots des 4 premières : ")
-print(f"    -> comparaison regression et arbre { sim(y_reg, y_tree) :.3f}% identiques")
-print(f"    -> regression logisitique : {eff(y, y_reg)}")
+print(f"    -> comparaison regression et arbre { sim(y_reg, y_tree) :.1f}% identiques")
+print(f"    -> lsregression logisitique : {eff(y, y_reg)}%")
 print(f"    -> arbre de décision : {eff(y, y_tree)}")
+print(f"Taux de spams : original {ratio(y)}% / reg {ratio(y_reg)}% / tree {ratio(y_tree)}%")

@@ -9,7 +9,7 @@ url_avatar2 = "https://www.youtube.com/watch?v=d9MyW72ELq0"
 url_topgun = "https://www.youtube.com/watch?v=qSqVVswa420" 
 url_greenlantern = "https://www.youtube.com/watch?v=7-GO9fo9DtM"
 
-yt_url = url_greenlantern # <- Entrer url ici
+yt_url = url_topgun # <- Entrer url ici
 X_test = yt_mat_occ(yt_url, words)
 
 print(f"Prédictions à partir des modèles avec {len(words)} mots connus : ")
