@@ -20,10 +20,10 @@ gen_comment1 = openai.Completion.create(
     max_tokens=50,
     n=1, 
     stop=None,
-    temperature=0.8,
+    temperature=0.9,
 )
 
 print("----------")
-print("Texte similaire aux textes de l'étiquette 0 : ", gen_comment0['choices'][0]['text'])
+print("Génération d'un commentaire normal : ", gen_comment0['choices'][0]['text'])
 print("----------")
-print("Texte similaire aux textes de l'étiquette 1 : ", gen_comment1['choices'][0]['text'])
+print("Génération d'un spam : ", gen_comment1['choices'][0]['text'])
