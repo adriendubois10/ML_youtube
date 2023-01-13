@@ -8,8 +8,9 @@ url_reynoldstonightshow = "https://www.youtube.com/watch?v=5AA2yMgoeS0"
 url_avatar2 = "https://www.youtube.com/watch?v=d9MyW72ELq0"
 url_topgun = "https://www.youtube.com/watch?v=qSqVVswa420" 
 url_greenlantern = "https://www.youtube.com/watch?v=7-GO9fo9DtM"
+url_happynewyear = "https://www.youtube.com/watch?v=2FcDNi1HkfI"
 
-yt_url = url_topgun # <- Entrer url ici
+yt_url = url_happynewyear # <- Entrer url ici
 X_test = yt_mat_occ(yt_url, words)
 
 print(f"Prédictions à partir des modèles avec {len(words)} mots connus : ")

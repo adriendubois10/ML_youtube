@@ -32,10 +32,14 @@ def recup_comments(URL):
 
     return comments
 
-def yt_mat_occ(URL, words_list):
+def yt_mat_occ(URL, words_list, mots = False):
     mat = []
     for comment in recup_comments(URL):
         mat.append([comment.count(word) for word in words_list])
+    cv = CountVectorizer()
+    cv.fit_transform(comments)
+    if mots:
+        return mat, cv.get_feature_names_out()
     return mat
 
 

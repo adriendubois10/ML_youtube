@@ -1,5 +1,7 @@
 # Projet Python_17E : Filtrage de spams par ML
 
+/!\ : exécuter les fichiers depuis le dossier src et non racine.
+
 ## Lecture des fichiers csv
 
 Fichiers csv avec les informations COMMENT_ID, AUTHOR,DATE, CONTENT, CLASS pour chaque donnée. \

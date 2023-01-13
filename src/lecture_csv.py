@@ -56,3 +56,16 @@ def extraction_partielle_mots(csvfile, mots):
         for comment in rows(cf):
             mat_count.append([comment['CONTENT'].count(mot) for mot in mots])
     return mat_count
+
+def extraction_comments_label(csvfiles):
+    ''' Entrée : liste de chemins vers des fichiers csv correctement formatés pour les commentaires
+        Sortie : liste des commentaires etiquetés 0 , liste des commentaires étiqutés 1 '''
+    comments0, comments1, k = [], [], 0
+    for csvfile in csvfiles:
+        with open(csvfile, 'r') as cf:
+            for comment in rows(cf):
+                if int(comment['CLASS']) == 0: 
+                    comments0.append(comment['CONTENT'])
+                else:
+                    comments1.append(comment['CONTENT'])
+    return comments0, comments1

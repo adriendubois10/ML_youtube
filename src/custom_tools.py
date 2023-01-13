@@ -18,3 +18,6 @@ def sim(y1, y2):
 def ratio(y):
     ''' Entrée : y tableau de 0 si positif, 1 si négatif '''
     return 100 * np.mean(y)
+
+def list_to_prompt(liste, lim=512):
+    return "\n".join(liste[:lim])
