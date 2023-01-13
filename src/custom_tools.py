@@ -23,5 +23,5 @@ def ratio(y):
 def list_to_prompt(liste, lim=100):
     new_liste = []
     for _ in range(min(len(liste),lim)):
-        new_liste.append(liste[rd.randint(0,len(liste))])
+        new_liste.append(liste[rd.randint(0,len(liste)-1)])
     return "\n".join(new_liste)
