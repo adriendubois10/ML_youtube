@@ -1,4 +1,5 @@
 import numpy as np
+import random as rd
 
 def eff(y, y_pred):
     m = 0
@@ -19,5 +20,8 @@ def ratio(y):
     ''' Entrée : y tableau de 0 si positif, 1 si négatif '''
     return 100 * np.mean(y)
 
-def list_to_prompt(liste, lim=512):
-    return "\n".join(liste[:lim])
+def list_to_prompt(liste, lim=100):
+    new_liste = []
+    for _ in range(min(len(liste),lim)):
+        new_liste.append(rd.randint(len(liste)))
+    return "\n".join(new_liste)
