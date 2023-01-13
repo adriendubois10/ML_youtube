@@ -2,6 +2,16 @@
 
 /!\ : exécuter les fichiers depuis le dossier src et non racine.
 
+## Modules
+
+* random 
+* numpy 
+* scikit_learn 
+* googleapiclient 
+* openai
+* csv 
+* itertools
+
 ## Lecture des fichiers csv
 
 Fichiers csv avec les informations COMMENT_ID, AUTHOR,DATE, CONTENT, CLASS pour chaque donnée. \
@@ -35,4 +45,11 @@ Dans le fichier `predict.py`, entrer une URL youtube pour la variable `yt_url` e
 1. récupération des commentaires de la vidéo entrée grâce à l'API Youtube Data (cf `yt_comments_recup.py`)
 2. calcul de la matrice d'occurence `X_test` des **mots présents dans les jeu d'entraînements** dans les nouveaux nouveaux commentaires (environ 4k mots)
 3. Affichage et comparaison des prédictions des 3 classifieurs.
+
+## Génération très basique de nouveaux commentaires
+
+Générer du texte est autrement plus complexe que de classifier. 
+En effet la sortie demandée n'est pas simplement 0 ou 1 mais beaucoup plus complexe. \
+Basé sur le modèle pré-entraîné GPT-2 qui prédit la suite d'un texte donné. En fournissant comme texte d'entrée un nombre restreint de commentaires spam ou non (environ 100 car le modèle est limité), on en obtient de nouveaux. \
+Voir `generation.py`.
 
