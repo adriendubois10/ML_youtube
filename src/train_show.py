@@ -11,7 +11,7 @@ print(f"{len(X)} commentaires sur le jeu d'entraînement et {len(X_test)} sur le
 
 # Classifieur 1 : KMeans algo de clustering (non supervisé)
 
-kmeans = KMeans(n_clusters=2, random_state=0, n_init="auto").fit(X)
+kmeans = KMeans(n_clusters=2, random_state=1, n_init=100).fit(X)
 y_pred1 = kmeans.labels_
 e = eff(y, y_pred1)
 e, y_pred1 = flip(e, y_pred1) # si besoin les clusters peuvent être inversés, du fait de l'apprentissage non supervisé les 0 et 1 peuvent être inversés
@@ -21,7 +21,7 @@ print("\nEfficacité clustering (non supervisé) :", e)
 
 from sklearn.linear_model import LogisticRegression
 
-logistic_regression = LogisticRegression().fit(X, y)
+logistic_regression = LogisticRegression(max_iter=100).fit(X, y)
 y_test_regpred = logistic_regression.predict(X_test)
 print("\nEfficacité régression logistique sur le modèle d'entraînement (supervisé): ", logistic_regression.score(X, y))
 print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_regpred))
@@ -30,7 +30,7 @@ print("Efficacité régression logistique sur le modèle de validation (supervis
 
 from sklearn.tree import DecisionTreeClassifier
 
-decision_tree = DecisionTreeClassifier().fit(X, y)
+decision_tree = DecisionTreeClassifier(max_depth=None, min_impurity_decrease=0.0, min_samples_split=5).fit(X, y)
 y_test_treepred = decision_tree.predict(X_test)
 print("\nEfficacité régression logistique sur le modèle d'entraînement (supervisé): ", decision_tree.score(X, y))
 print("Efficacité régression logistique sur le modèle de validation (supervisé): ", eff(y_test,y_test_treepred)) 
@@ -49,6 +49,6 @@ y_tree = dt.predict(X_test)
 print(100*"_")
 print("\nPrédictions sur la 5e vidéo restreinte aux mots des 4 premières : ")
 print(f"    -> comparaison regression et arbre { sim(y_reg, y_tree) :.1f}% identiques")
-print(f"    -> lsregression logisitique : {eff(y, y_reg)}%")
+print(f"    -> régression logisitique : {eff(y, y_reg)}%")
 print(f"    -> arbre de décision : {eff(y, y_tree)}")
 print(f"Taux de spams : original {ratio(y)}% / reg {ratio(y_reg)}% / tree {ratio(y_tree)}%")
