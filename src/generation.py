@@ -10,7 +10,7 @@ gen_comment0 = openai.Completion.create(
     prompt=list_to_prompt(comments0, lim=100),
     max_tokens=30, # Majoration du nombre de mots
     n=1, 
-    stop=None, # Pas de condition d'arrêt particulière (la condition "\n" ne produit pas de résultat)
+    stop=None, # Pas de condition d'arrêt particulière (la condition "\n" ne produit pas de résultat )
     temperature=0.8, # Sorte de taux d'aléatoire, à quel point le nouveau commentaire s'écarte du modèle
 )
 
@@ -19,7 +19,6 @@ gen_comment1 = openai.Completion.create(
     prompt=list_to_prompt(comments1, lim=100),
     max_tokens=50,
     n=1, 
-    stop=None,
     temperature=0.9,
 )
 
