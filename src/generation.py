@@ -2,7 +2,7 @@ import openai
 from lecture_csv import *
 from custom_tools import list_to_prompt
 
-openai.api_key = "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" # Attention, nombre limité d'appel
+openai.api_key = "Clé sur la fiche projet" # Attention, nombre limité d'appel
 comments0, comments1 = extraction_comments_label([bases_noms[0]]) # Séparation des commentaires de la vidéo 1 (Psy) selon les étiquettes
 
 gen_comment0 = openai.Completion.create(

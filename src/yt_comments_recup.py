@@ -1,7 +1,7 @@
 # Importation API google 
 import googleapiclient.discovery as ggl
 
-key_api = "AIzaSyDUs4iHJ3D7lR0TKiuCf40v3ZNYXOFopk8" # Obtention d'une clé sur le service développeur de google
+key_api = "Clé sur la fiche projet" # Obtention d'une clé sur le service développeur de google
 
 def recup_comments(URL):
     ''' Entrée : URL d'une vidéo youtube
